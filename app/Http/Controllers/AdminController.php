@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Specialitem;
 use App\Models\Contact;
-class AdminController extends Controller
+use Carbon\Carbon;
+class AdminController extends BaseController
 {
     public function index(){
         $allmessages=Contact::get();
@@ -21,6 +22,10 @@ class AdminController extends Controller
 
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::all();
+        // $message=Contact::find(1);
+        // // get the current time
+        // $now=Carbon::now();
+        // $timeelapsed=$message->created_at->diffForHumans($now);
         return view('messages',compact('unreadmessages','allmessages'));
     }
     /**
@@ -47,5 +52,6 @@ class AdminController extends Controller
         Contact::where('id',$id)->delete();
         return redirect('admin/messages')->with('success','beverage deleted successfully');
     }
+
 
 }

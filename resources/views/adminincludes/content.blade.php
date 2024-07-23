@@ -114,7 +114,7 @@
 												<button type="submit" class="btn btn-success">Add</button>
 											</div>
 										</div>
-
+										@include('adminincludes.messages')
 									</form>
 								</div>
 							</div>

@@ -8,13 +8,28 @@
               <form action="{{route('wavecafe')}}" method="POST" id="contact-form">
                 @csrf
                 <div class="tm-form-group">
-                  <input type="text" name="name" class="tm-form-control" placeholder="Name" required="" />
+                  <input type="text" name="name" class="tm-form-control @error('name') is-invalid @enderror" placeholder="Name" required="" />
+                  @error('name')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
                 </div>
                 <div class="tm-form-group">
                   <input type="email" name="email" class="tm-form-control" placeholder="Email" required="" />
+                  @error('email')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
                 </div>        
                 <div class="tm-form-group tm-mb-30">
                   <textarea rows="6" name="message" class="tm-form-control" placeholder="Message" required=""></textarea>
+                  @error('message')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
                 </div>        
                 <div>
                   <button type="submit" class="tm-btn-primary tm-align-right">

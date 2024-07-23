@@ -40,7 +40,7 @@
 											<span class="image"><img src="{{asset('adminassets/images/img.jpg')}}" alt="Profile Image" /></span>
 											<span>
 												<span>{{$message->name}}</span>
-												<span class="time">{{$message->created_at}}</span>
+												<span class="time">{{$message->created_at->diffForHumans()}}</span>
 											</span>
 											<span class="message">
 												{{$message->message}}

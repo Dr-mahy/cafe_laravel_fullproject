@@ -4,6 +4,7 @@
     @include('includes.head')
 </head>
 <body>
+  
   @include('includes.sitehead')
   @include('includes.drinkmenue')
   @include('includes.about')

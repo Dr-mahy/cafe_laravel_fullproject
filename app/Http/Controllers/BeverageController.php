@@ -10,7 +10,7 @@ use App\Models\Category;
 use App\Models\Specialitem;
 use App\Models\Contact;
 
-class BeverageController extends Controller
+class BeverageController extends BaseController
 {
     use Common;
     /**
@@ -80,10 +80,9 @@ class BeverageController extends Controller
     public function edit(string $id)
     {
         $unreadmessages=Contact::where('read',false)->get();
-        $allmessages=Contact::get();
         $data=Category::select('id','category')->get();
         $beverage=Beverage::FindOrFail($id);
-        return view('editbeverage',compact('beverage','data','unreadmessages','almessages'));
+        return view('editbeverage',compact('beverage','data','unreadmessages'));
     }
 
     /**

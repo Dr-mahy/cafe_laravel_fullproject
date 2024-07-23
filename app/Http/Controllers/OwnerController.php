@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Owner;
 use App\Models\Contact;
 
-class OwnerController extends Controller
+class OwnerController extends BaseController
 {
     /**
      * Display a listing of the resource.

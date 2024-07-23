@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-
-class HomeController extends Controller
+use App\Models\Contact;
+use App\Models\Owner;
+class HomeController extends BaseController
 {
     /**
      * Create a new controller instance.
@@ -24,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('adduser');
+        $owners=Owner::get();
+        $unreadmessages=Contact::where('read',false)->get();
+        $allmessages=Contact::get();
+        return view('users',compact('allmessages','unreadmessages','owners'));
     }
 }

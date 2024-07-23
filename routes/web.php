@@ -31,22 +31,22 @@ Route::prefix('admin')->group(function(){
     Route::get('forcedeluser/{id}',[OwnerController::class,'forcedelete'])->middleware('verified')->name('forcedeluser');
     Route::get('trashedusers',[OwnerController::class,'trash'])->middleware('verified')->name('trashedusers');
    
-    Route::get('addcategories',[CategoryController::class,'create'])->name('addcategories');
-    Route::post('insertcategory',[CategoryController::class,'store'])->name('insertcategory');
-    Route::get('categories',[CategoryController::class,'index'])->name('categories');
-    Route::get('editcategory/{id}',[CategoryController::class,'edit'])->name('editcategory');
-    Route::put('updatecategory/{id}',[CategoryController::class,'update'])->name('updatecategory');
-    Route::delete('deletecategory/{id}',[CategoryController::class,'destroy'])->name('deletecategory');
-    Route::get('addbeverage',[BeverageController::class,'create'])->name('addbeverage');
-    Route::post('insertbeverage',[BeverageController::class,'store'])->name('insertbeverage');
-    Route::get('beverages',[BeverageController::class,'index'])->name('beverages');
-    Route::get('editbeverage/{id}',[BeverageController::class,'edit'])->name('editbeverage');
-    Route::put('updatebeverage/{id}',[BeverageController::class,'update'])->name('updatebeverage');
-    Route::delete('deletebeverage/{id}',[BeverageController::class,'destroy'])->name('deletebeverage');
+    Route::get('addcategories',[CategoryController::class,'create'])->middleware('verified')->name('addcategories');
+    Route::post('insertcategory',[CategoryController::class,'store'])->middleware('verified')->name('insertcategory');
+    Route::get('categories',[CategoryController::class,'index'])->middleware('verified')->name('categories');
+    Route::get('editcategory/{id}',[CategoryController::class,'edit'])->middleware('verified')->name('editcategory');
+    Route::put('updatecategory/{id}',[CategoryController::class,'update'])->middleware('verified')->name('updatecategory');
+    Route::delete('deletecategory/{id}',[CategoryController::class,'destroy'])->middleware('verified')->name('deletecategory');
+    Route::get('addbeverage',[BeverageController::class,'create'])->middleware('verified')->name('addbeverage');
+    Route::post('insertbeverage',[BeverageController::class,'store'])->middleware('verified')->name('insertbeverage');
+    Route::get('beverages',[BeverageController::class,'index'])->middleware('verified')->name('beverages');
+    Route::get('editbeverage/{id}',[BeverageController::class,'edit'])->middleware('verified')->name('editbeverage');
+    Route::put('updatebeverage/{id}',[BeverageController::class,'update'])->middleware('verified')->name('updatebeverage');
+    Route::delete('deletebeverage/{id}',[BeverageController::class,'destroy'])->middleware('verified')->name('deletebeverage');
     Route::get('specialitems',[AdminController::class,'index'])->name('specialitem');
-    Route::get('messages',[AdminController::class,'messages'])->name('messages');
-    Route::get('showmessage/{id}',[AdminController::class,'show'])->name('showmessage');
-    Route::delete('deletemessage',[AdminController::class,'destroymessage'])->name('deletemessage');
+    Route::get('messages',[AdminController::class,'messages'])->middleware('verified')->name('messages');
+    Route::get('showmessage/{id}',[AdminController::class,'show'])->middleware('verified')->name('showmessage');
+    Route::delete('deletemessage',[AdminController::class,'destroymessage'])->middleware('verified')->name('deletemessage');
  
 });
 

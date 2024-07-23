@@ -8,3 +8,8 @@
     {{session('error')}}
 </div>
 @endif
+@if(session('status'))
+<div class="alert alert-error">
+    {{session('status')}}
+</div>
+@endif
