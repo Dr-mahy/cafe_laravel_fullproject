@@ -6,9 +6,9 @@ Use App\Http\Controllers\AdminController;
 Use App\Http\Controllers\OwnerController;
 Use App\Http\Controllers\CategoryController;
 Use App\Http\Controllers\BeverageController;
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('testadmin', function () {
     return view('testadmin');
 });
@@ -49,7 +49,9 @@ Route::prefix('admin')->group(function(){
     Route::delete('deletemessage',[AdminController::class,'destroymessage'])->middleware('verified')->name('deletemessage');
  
 });
-
+Route::get('/', function () {
+    return view('auth.combined_form');
+});
 
 Auth::routes(['verify'=>true]);
 

@@ -13,6 +13,9 @@ class CategoryController extends BaseController
      */
     public function index()
     {
+        // __to share dynamic title__
+        Parent::__construct();
+        $this->setTitle('categories');
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::get();
         $categories=Category::get();
@@ -24,6 +27,8 @@ class CategoryController extends BaseController
      */
     public function create()
     {
+        Parent::__construct();
+        $this->setTitle('addcategory');
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::get();
         return view('addcategories',compact('allmessages','unreadmessages'));
@@ -54,6 +59,8 @@ class CategoryController extends BaseController
      */
     public function edit(string $id)
     {
+        Parent::__construct();
+        $this->setTitle('edit category');
         $category=Category::FindOrFail($id);
         return view('editcategory',compact('category'));
     }

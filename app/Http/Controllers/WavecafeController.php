@@ -37,7 +37,7 @@ class WavecafeController extends Controller
         $messages=$this->errMsg();
        $data=$request->validate([
         'name'=>'required|max:100|min:3',
-        'email'=>'required|unique:users|email',
+        'email'=>'required|email',
         'message' => 'required',
        ],$messages
     );
@@ -61,7 +61,7 @@ class WavecafeController extends Controller
             return[
                 'name.required'=>'the client name is required,please insert the name',
                 'message.min'=>'the name is short,the name must be more than 5 letters',
-                'email.unique'=>'unique',
+                'email.required'=>'required',
             ];
         }
 }

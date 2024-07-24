@@ -13,10 +13,11 @@ class OwnerController extends BaseController
      */
     public function index()
     {
+        $title="users";
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::get();
         $owners=Owner::get();
-        return view('users',compact('owners','allmessages','unreadmessages'));
+        return view('users',compact('owners','allmessages','unreadmessages','title'));
     }
 
     /**
@@ -24,9 +25,10 @@ class OwnerController extends BaseController
      */
     public function create()
     {
+        $title=" add user";
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::get();
-        return view('adduser',compact('allmessages','unreadmessages'));
+        return view('adduser',compact('allmessages','unreadmessages','title'));
     }
 
     /**
@@ -52,10 +54,11 @@ class OwnerController extends BaseController
      */
     public function show(string $id)
     {
+        $title="show user";
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::get();
         $owner=Owner::FindOrFail($id);
-        return view ('showuser',compact('owner','unreadmessages','allmessages'));
+        return view ('showuser',compact('owner','unreadmessages','allmessages','title'));
     }
 
     /**
@@ -63,10 +66,11 @@ class OwnerController extends BaseController
      */
     public function edit(string $id)
     {
+        $title="edit user";
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::get();
         $owner=Owner::FindOrFail($id);
-        return view ('edituser',compact('owner','unreadmessages','allmessages'));
+        return view ('edituser',compact('owner','unreadmessages','allmessages','title'));
     }
 
     /**
@@ -100,6 +104,8 @@ class OwnerController extends BaseController
      // trash
      public function trash()
      { 
+        Parent::__construct();
+        $this->setTitle('trushed users');
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::get();
        $trashed=Owner::onlyTrashed()->get();

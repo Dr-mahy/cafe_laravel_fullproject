@@ -9,9 +9,11 @@ use Carbon\Carbon;
 
 class BaseController extends Controller
 {
+   protected $title;
+   
    public function __construct(){
 
-   
+    view()->share('title',$this->title);
     $this->sharemessages();
     $this->sharetimeelapsed();
     $this->shareunreadmessages();
@@ -32,5 +34,9 @@ protected function sharemessages(){
     $allmessages=Contact::get();
     view()->share('allmessages',$allmessages);
 }
-
+// _____function to pass the $title to all pages as adynamic variable
+protected function settitle($title){
+   $this->title=$title;
+   view()->share('title',$this->title);
+}
 }

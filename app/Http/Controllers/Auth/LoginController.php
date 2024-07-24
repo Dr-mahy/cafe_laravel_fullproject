@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 class LoginController extends Controller
 {
     /*
@@ -38,14 +40,6 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 
-    // public function credentials(Request $request){
-    //     if(is_string($request->email)){
-    //     return ['username'=>$request->email, 'password'=>$request->password];
-    //   }elseif(filter_var($request->email, FILTER_VALIDATE_EMAIL)){
-    //     return ['email'=>$request->email, 'password'=>$request->password];
-    //    }
-    //    return $request->only($request->email,'password');
-    //     }
     public function credentials(Request $request){
       
         if(filter_var($request->email, FILTER_VALIDATE_EMAIL)){
@@ -56,4 +50,21 @@ class LoginController extends Controller
     public function username(){
       return 'email';
     }
+// ________handle the validation of login form___________________
+    // public function login(Request $request)
+    // {
+        
+        // $data=$request->validate([
+        //     'email'=>'required|email',
+        //     'password'=>'required',
+        // ]);
+        // if(Auth::attempt($data)){
+        //     $request->session()->regenerate();
+        //     return redirect()->intended('admin .adduser');
+        // }
+        // return back()->witherrors([
+        //     'email'=>'the email and password doesnt match',
+        // ]);
+
+   
 } 

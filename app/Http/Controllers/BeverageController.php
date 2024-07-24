@@ -18,6 +18,8 @@ class BeverageController extends BaseController
      */
     public function index()
     {
+        Parent::__construct();
+        $this->setTitle('beverages');
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::get();
         $beverages=Beverage::get();
@@ -29,10 +31,11 @@ class BeverageController extends BaseController
      */
     public function create()
     {
+        $title="add beverage";
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::get();
         $data=Category::select('id','category')->get();
-        return view('addbeverage',compact('data','allmessages','unreadmessages'));
+        return view('addbeverage',compact('data','allmessages','unreadmessages','title'));
     }
 
     /**
@@ -79,6 +82,8 @@ class BeverageController extends BaseController
      */
     public function edit(string $id)
     {
+        Parent::__construct();
+        $this->setTitle('edit beverage');
         $unreadmessages=Contact::where('read',false)->get();
         $data=Category::select('id','category')->get();
         $beverage=Beverage::FindOrFail($id);

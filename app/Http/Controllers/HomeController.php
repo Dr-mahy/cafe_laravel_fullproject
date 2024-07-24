@@ -24,9 +24,10 @@ class HomeController extends BaseController
      */
     public function index()
     {
+        $title="home";
         $owners=Owner::get();
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::get();
-        return view('users',compact('allmessages','unreadmessages','owners'));
+        return view('users',compact('allmessages','unreadmessages','owners','title'));
     }
 }

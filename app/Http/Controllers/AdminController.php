@@ -9,6 +9,8 @@ use Carbon\Carbon;
 class AdminController extends BaseController
 {
     public function index(){
+        Parent::__construct();
+        $this->setTitle('specialItems');
         $allmessages=Contact::get();
         $specialitems=Specialitem::get();
         return view('specialitems',compact('specialitems','allmessages'));
@@ -19,7 +21,8 @@ class AdminController extends BaseController
      */
     public function messages()
     {
-
+        Parent::__construct();
+        $this->setTitle('messages');
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::all();
         // $message=Contact::find(1);
@@ -33,6 +36,8 @@ class AdminController extends BaseController
      */
     public function show(string $id)
     {
+        Parent::__construct();
+        $this->setTitle('show message');
         $unreadmessages=Contact::where('read',false)->get();
         $allmessages=Contact::get();
         $message=Contact::FindOrFail($id);
